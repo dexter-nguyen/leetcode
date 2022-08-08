@@ -1,3 +1,15 @@
+
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        current = head
+        previous = None
+        while current:
+            store = current.next 
+            current.next = previous 
+            previous = current
+            current = store 
+        return previous # represents the head of reversed linkedlist
+        
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
         visit = set()
         
