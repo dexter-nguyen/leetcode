@@ -67,3 +67,23 @@ class Solution:
         if root:
             root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
         return root
+
+    # The isBadVersion API is already defined for you.
+# def isBadVersion(version: int) -> bool:
+
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        if isBadVersion(n) and n ==1:
+            return n
+        low,high,mid=1, n,(1+n)//2
+
+        while low < high:
+            if isBadVersion(mid):
+                high = mid
+            else:
+                low = mid  + 1
+            mid = low + (high - low)//2
+            
+        return low
+                 
+        
