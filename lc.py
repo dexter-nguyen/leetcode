@@ -1,3 +1,28 @@
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        dic = {}
+        
+        rows, cols = len(image), len(image[0])
+        
+        def notValid(r,c,value) -> bool:
+            return  r < 0 or c < 0 or r >= rows or c >= cols or image[r][c] != value or (r,c) in dic
+        
+        
+        def dfs(r,c, value):
+            if notValid(r,c,value):
+                return
+            
+            dic[(r,c)] = True
+            image[r][c] = color
+            dfs(r+1,c,value)
+            dfs(r-1,c,value)
+            dfs(r,c+1,value)
+            dfs(r,c-1,value)
+            
+        dfs(sr,sc,image[sr][sc])
+        return image
+            
+            
+        
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         
