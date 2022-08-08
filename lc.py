@@ -1,17 +1,17 @@
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
-        dic = {}
+        visit = set()
         
         rows, cols = len(image), len(image[0])
         
         def notValid(r,c,value) -> bool:
-            return  r < 0 or c < 0 or r >= rows or c >= cols or image[r][c] != value or (r,c) in dic
+            return  r < 0 or c < 0 or r >= rows or c >= cols or image[r][c] != value or (r,c) in visit
         
         
         def dfs(r,c, value):
             if notValid(r,c,value):
                 return
             
-            dic[(r,c)] = True
+            visit.add((r,c))
             image[r][c] = color
             dfs(r+1,c,value)
             dfs(r-1,c,value)
@@ -21,6 +21,9 @@
         dfs(sr,sc,image[sr][sc])
         return image
             
+            
+        
+        
             
         
 class Solution:
