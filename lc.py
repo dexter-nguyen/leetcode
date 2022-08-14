@@ -1,4 +1,18 @@
-
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        dic = Counter(nums)
+        
+        # for num in nums:
+        #     if num not in dic:
+        #         dic[num] = 1
+        #     else:
+        #         dic[num] +=1
+                
+        for key, value in dic.items():
+            if value >1:
+                return True
+            
+        return False
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         
