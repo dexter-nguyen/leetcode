@@ -1,3 +1,28 @@
+
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        result = ""
+        i,j,carry= len(a) - 1, len(b) - 1,0
+        
+        while i >= 0 or j>=0:
+            temp = carry
+            if i >= 0:
+                temp += ord(a[i]) - ord('0')    
+                
+            
+            if j >= 0:
+                temp += ord(b[j]) - ord('0')
+            
+            i, j = i -1, j -1
+                
+            carry = 1 if temp > 1 else 0
+            result += str(temp % 2)
+            
+        if carry > 0:
+            result += str(carry)
+        return result[::-1]
+        
+        
 def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':    
     if p.val <= root.val <= q.val or q.val <= root.val <= p.val:
             return root
