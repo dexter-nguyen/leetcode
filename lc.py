@@ -1,3 +1,19 @@
+
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        
+        def depth(root):
+            if not root:
+                return 0
+            
+            left = depth(root.left)
+            right = depth(root.right)
+            
+            
+            return max(left,right) + 1
+    
+        return depth(root)
+        
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head.next:
