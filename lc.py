@@ -1,3 +1,17 @@
+ import heapq
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        stones = [i * -1 for i in stones]
+        heapify(stones)
+        while len(stones) > 1:
+            s1 = -heappop(stones)
+            s2 = -heappop(stones)
+            if s1 != s2:
+                heappush(stones, -(s1-s2))
+                
+        return -heappop(stones) if len(stones) >0 else 0
+            
+ 
  # minHeap => first element of len k is the kth- largest
 class KthLargest:
 
