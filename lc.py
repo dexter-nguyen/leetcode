@@ -1,4 +1,23 @@
 class Solution:
+    def isValid(self, s: str) -> bool:
+        """
+        :type s: str
+        :rtype: bool
+        """
+        if len(s) % 2 == 1:
+            return False
+        
+        dic = {'(': ')', '{': '}', '[': ']'}
+        stack = []
+        
+        for c in s:
+            if c in dic:
+                stack.append(c)
+            else:
+                if len(stack) == 0 or c != dic[stack.pop()] :
+                    return False
+        return len(stack) == 0
+class Solution:
     def romanToInt(self, s: str) -> int:
         dic = { 'I':1, 'V':5,'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
         
