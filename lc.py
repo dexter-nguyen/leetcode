@@ -1,4 +1,23 @@
 class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        
+        def binary(target, nums, low, high):
+            if low > high:
+                return -1
+            
+            mid = low + (high - low)//2
+            
+            if nums[mid] == target:
+                return mid
+            
+            if nums[mid] > target:
+                return binary(target,nums,low,mid - 1)
+            else:
+                return binary(target,nums,mid + 1,high)
+            
+        return binary(target,nums, 0, len(nums) - 1)
+ 
+class Solution:
     def isValid(self, s: str) -> bool:
         """
         :type s: str
