@@ -1,4 +1,17 @@
 class Solution:
+    def minDifference(self, nums: List[int]) -> int:
+        nums.sort()
+        print(nums)
+        if len(nums) <=3 :
+            return 0
+        ret = float("inf")
+        for i in range(4):
+            ret = min(abs(nums[-4+i]-nums[i]),ret)
+            if ret == 0:
+                return ret
+        
+        return ret
+class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         result = nums[0]
         if len(nums) == 1:
