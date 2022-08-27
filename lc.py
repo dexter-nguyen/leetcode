@@ -1,3 +1,24 @@
+class Logger:
+
+    def __init__(self):
+        self.map = {}
+        
+
+    def shouldPrintMessage(self, timestamp: int, message: str) -> bool:
+        if message not in self.map:
+            self.map[message] = timestamp + 10
+            return True
+        
+        if self.map[message] > timestamp:
+            return False
+        elif self.map[message] < timestamp:
+            self.map[message] = timestamp + 10
+            return True
+            
+        else:
+            self.map[message] = self.map[message]+ 10
+            return True
+            
 class Solution:
     def minDifference(self, nums: List[int]) -> int:
         nums.sort()
