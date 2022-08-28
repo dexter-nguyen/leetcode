@@ -1,3 +1,19 @@
+class Solution:
+    def calculateTime(self, keyboard: str, word: str) -> int:
+        dic = defaultdict(str)
+        
+        for i in range(len(keyboard)):
+            dic[keyboard[i]] = i
+            
+        cur = 0
+        ret = 0
+
+        for i in range(len(word)):
+            ret += abs(cur - dic[word[i]])
+            cur = dic[word[i]]
+            
+        return ret
+
 class Logger:
 
     def __init__(self):
