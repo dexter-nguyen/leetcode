@@ -1,3 +1,24 @@
+def strongPasswordCheckerII( password: str) -> bool:
+    
+    n = len(password)
+    
+    if n < 5 or n >12:
+        return False
+
+    seen = set()
+    pattern = set()
+    for i, c in enumerate(password):
+        if i > 0 and c == password[i - 1]:
+            return False
+        if c.isupper():
+            seen.add('u')
+        elif c.islower():
+            seen.add('l')
+        elif c.isdigit():
+            seen.add('d')             
+        else:
+            seen.add('s')
+    return  len(password) > 7 and len(seen) == 4
 
 /class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
