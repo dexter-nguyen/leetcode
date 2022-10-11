@@ -1,4 +1,46 @@
+import random
+class RandomizedSet:
 
+    def __init__(self):
+        self.data = []
+        self.data_map = {}
+    
+        
+
+    def insert(self, val: int) -> bool:
+        if val not in self.data_map:
+            position = len(self.data)
+            self.data_map[val] = position
+            self.data.append(val)
+            return True
+        return False
+        
+
+    def remove(self, val: int) -> bool:
+        #We need to exchange the position with the last element in the map and list
+        if val in self.data_map:
+            last_element = self.data[-1]
+            index_of_remove = self.data_map[val]
+
+
+            self.data_map[last_element] = index_of_remove
+
+            self.data[-1] = val
+            self.data[index_of_remove] = last_element
+
+            self.data_map.pop(val)
+            self.data.pop()
+            return True
+        return False
+    def getRandom(self) -> int:
+        return random.choice(self.data)
+
+
+# Your RandomizedSet object will be instantiated and called as such:
+# obj = RandomizedSet()
+# param_1 = obj.insert(val)
+# param_2 = obj.remove(val)
+# param_3 = obj.getRandom()
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         queue = deque()
