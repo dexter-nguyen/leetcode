@@ -1,3 +1,33 @@
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        start = []
+        end = []
+        for s,e in intervals:
+            start.append(s)
+            end.append(e)
+        
+        start.sort()
+        end.sort()
+
+        # since start always end first
+        s,e = 0,0
+        res = 0 
+        count = 0   #The current rooms we need
+
+        while s < len(start):
+            if start[s] < end[e]:  #if the current start < end
+                count +=1
+                s +=1
+            else:                  # we always incre end even when they are even
+                e += 1
+                count -= 1
+            res = max(res, count)
+        return res
+
+
+
+
+
 import random
 class RandomizedSet:
 
