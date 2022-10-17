@@ -1,12 +1,12 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        #Sliding winddow
+        #Sliding winddow from left to the current position 
         # key = ch : value = last seen index
         left = maxLength = 0 
         seen = {}
         
         for i in range(len(s)):
-            if s[i] in seen and left <= seen[s[i]]:
+            if s[i] in seen and left <= seen[s[i]]: #If we seen that ch and left ptr is <= that postion
                 left = seen[s[i]] + 1
             else:
                 maxLength = max(maxLength, i - left + 1) # get the current length from start to current
