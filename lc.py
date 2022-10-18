@@ -1,3 +1,18 @@
+
+class Solution:
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+
+        def helper(root,n):
+            if not root: 
+                return
+
+            root.next = n
+
+            helper(root.left, root.right)  #connection 1
+            helper(root.right, n.left if n else None)  #connection 2
+
+        helper(root,None)
+        return root
 """
 # Definition for a Node.
 class Node:
