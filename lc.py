@@ -1,4 +1,29 @@
 class Solution:
+    def answerQueries(self, nums: List[int], queries: List[int]) -> List[int]:
+        def bin_search(target):
+            l=0
+            h=len(nums)-1
+            ans=-1
+            while l<=h:
+                m=(l+h)>>1
+                if nums[m]==target:
+                    return m+1
+                elif nums[m]>target:
+                    ans=m
+                    h=m-1    
+                else:
+                    l=m+1
+            return len(nums) if ans==-1 else ans
+        n,m=len(nums),len(queries)
+        a=[]
+        nums.sort()
+        for i in range(1,n):
+            nums[i]=nums[i]+nums[i-1]
+        for i in range(m):
+            a.append(bin_search(queries[i]))
+        return a  
+
+class Solution:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
         """
         :type transactions: List[str]
