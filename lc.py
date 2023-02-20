@@ -1,4 +1,19 @@
 class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        start = 0
+        end = len(nums)-1
+        
+        while start <= end:
+            mid = (start + end)//2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] > target:
+                end = mid - 1
+            else:
+                start = mid + 1
+        return end+1
+
+class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
         #bfs
         graph, dis = collections.defaultdict(list), [-1 for _ in range(n)]
